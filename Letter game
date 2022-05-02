@@ -1,0 +1,30 @@
+import random
+
+
+words = ['ice', 'chicken', 'wall', 'game', 'sock', 'black','red','shirt', 'phone','tv']
+random_word = random.choice(words)
+count = 0
+guess_list = []
+
+while True:                                     
+    guess = str(input("Guess a letter:  "))
+    guess = guess.lower()
+
+    if guess not in guess_list:
+        if guess in random_word:             
+            print("correct")
+
+        else:                          
+            count =+ 1 
+            print("Not in the word, attempts: %d" % count)
+
+            if count > 7:                   
+                print("You have reached max attempts")
+                print("You lose")
+                break
+                
+    else:
+        print("You have already guessed {}. Try again".format(guess))
+        print(set(guess_list))
+        
+    guess_list.append(guess)
